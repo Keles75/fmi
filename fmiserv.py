@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-#
-#
-# Required for import: path is OS dependent
-# Python framework in Domoticz do not include OS dependent path
-#
+
 import site
 import sys
 import os
@@ -82,9 +78,7 @@ class FindMyiPhone:
                 if ii > 3: 
                     self.iferror("Can't get device location")
                     return True
-            #else:
-                #print(deviceLoc)
-
+                
             self.battery = round((devicestatus.get('batteryLevel')*100), 0)
             self.lat = deviceLoc.get('latitude')
             self.lon = deviceLoc.get('longitude')
