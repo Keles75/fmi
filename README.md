@@ -16,16 +16,25 @@ sudo pip3 install -U setuptools virtualenv
 Then go to the plugins folder:
 
 cd domoticz/plugins
+
 git clone https://github.com/Keles75/fmi.git FindMyIphone
 
+
 # installing dependencies:
+
 cd FindMyIphone
+
 virtualenv -p python3 .env
+
 source .env/bin/activate
+
 pip install pyicloud requests
+
 deactivate
 
+
 Restart the Domoticz service
+
 sudo service domoticz.sh restart
 
 
