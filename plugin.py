@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-<plugin key="FindMyiPhone" name="FindMyiPhone" author="keles" version="0.1" wikilink="https://127.0.0.1" externallink="https://127.0.0.1/">
+<plugin key="FindMyiPhone" name="FindMyiPhone" author="keles" version="0.1">
     <params>
         <param field="Mode2" label="Update every x minutes" width="200px" required="true" default="10"/>
         <param field="Mode3" label="Devices list. Separator - ," width="3000px" required="true" default="iPhone"/>
@@ -20,11 +20,7 @@
 </plugin>
 """
 
-#
-#
-# Required for import: path is OS dependent
-# Python framework in Domoticz do not include OS dependent path
-#
+
 import Domoticz
 import site
 import sys
@@ -52,7 +48,6 @@ class BasePlugin:
         return
 
     def onStart(self):
-        #pylint: disable=undefined-variable
         global fm
 
         if Parameters["Mode6"] != "Normal":
@@ -125,6 +120,7 @@ class BasePlugin:
         Domoticz.Log("Devices checked and created/updated if necessary")
 
         self.lastupdate = datetime.now()
+        
         # Get data from iCloud
         if fm.getdevlist():
             u=1
@@ -174,7 +170,6 @@ class BasePlugin:
         u=1
         if fm.needUpdate(self.lastupdate):
             # Get new information and update the devices
-            #if fm.getdevlist():
                 for mydevicename in self.dev:   
                     if fm.getfmidata(mydevicename):    
                          distance = round(math.sqrt(((fm.lon - self.myLon) * 111.320 * math.cos(math.radians(fm.lat)))**2 + ((fm.lat - self.myLat) * 110.547)**2), 2)
@@ -233,47 +228,6 @@ def UpdateDevice(Unit, nValue, sValue, AlwaysUpdate=False):
             Devices[Unit].Update(nValue, str(sValue))
             Domoticz.Log("Update " + Devices[Unit].Name + ": " + str(nValue) + " - '" + str(sValue) + "'")
     return
-
-#############################################################################
-#                       Device specific functions                           #
-#############################################################################
-
-def createDevices():
-
-    # Are there any devices?
-    ###if len(Devices) != 0:
-        # Could be the user deleted some devices, so do nothing
-        ###return
-
-    # Give the devices a unique unit number. This makes updating them more easy.
-    # UpdateDevice() checks if the device exists before trying to update it.
-    #dev = []
-    dev = ['iPhone Denis']
-    u=1
-    for devicename in dev:
-        if u not in Devices:
-            Domoticz.Device(Name=devicename, Unit=u, TypeName="Switch", Used=1).Create()
-        u+=1
-        if u not in Devices:
-            Domoticz.Device(Name=devicename + "position", Unit=u, TypeName="Text", Used=1).Create()
-        u+=1
-        if u not in Devices:
-            Domoticz.Device(Name=devicename + "battery", Unit=u, TypeName="Percentage", Used=1).Create()
-        u+=1
-        
-        #UpdateImage(12, 'BuienradarLogo') # Logo update doesn't work for text device
-
-    #if  9 in Devices: UpdateImage(9, 'BuienradarRainLogo')
-    Domoticz.Log("Devices checked and created/updated if necessary")
-    return
-
-# Synchronise images to match parameter in hardware page
-#def UpdateImage(Unit, Logo):
-#    if Unit in Devices and Logo in Images:
-#        if Devices[Unit].Image != Images[Logo].ID:
-#            Domoticz.Log("Device Image update: 'Buienradar', Currently " + str(Devices[Unit].Image) + ", should be " + str(Images[Logo].ID))
-#            Devices[Unit].Update(nValue=Devices[Unit].nValue, sValue=str(Devices[Unit].sValue), Image=Images[Logo].ID)
-#    return
 
 
 global _plugin
