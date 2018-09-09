@@ -3,12 +3,12 @@
 """
 <plugin key="FindMyiPhone" name="FindMyiPhone" author="keles" version="0.1">
     <params>
-        <param field="Mode2" label="Update every x minutes" width="200px" required="true" default="10"/>
-        <param field="Mode3" label="Devices list. Separator - ," width="3000px" required="true" default="iPhone"/>
+        <param field="Mode2" label="Update every x minutes" width="50px" required="true" default="10"/>
+        <param field="Mode3" label="Devices list. Separator - ," width="400px" required="true" default="iPhone"/>
         <param field="Username" label="iCloud account" width="250px" required="true"/>
         <param field="Password" label="iCloud password" width="250px" required="true"/>
-        <param field="Mode4" label="Google maps API key" width="300px" required="true"/>
-        <param field="Mode5" label="Radius from home - km" width="200px" required="true" default="0.3"/>
+        <param field="Mode4" label="Google maps API key" width="350px" required="true"/>
+        <param field="Mode5" label="Radius from home - km" width="50px" required="true" default="0.3"/>
         <param field="Mode6" label="Debug" width="100px">
             <options>
                 <option label="True" value="Debug"/>
