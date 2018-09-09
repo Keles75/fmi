@@ -17,7 +17,7 @@ Then go to the plugins folder:
 
 cd domoticz/plugins
 
-git clone https://github.com/Keles75/fmi.git FindMyIphone
+git clone https://github.com/Keles75/fmi.git FindMyiPhone
 
 
 # installing dependencies:
