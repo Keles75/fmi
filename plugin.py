@@ -7,7 +7,7 @@
         <param field="Mode3" label="Devices list. Separator - ," width="3000px" required="true" default="iPhone"/>
         <param field="Username" label="iCloud account" width="250px" required="true"/>
         <param field="Password" label="iCloud password" width="250px" required="true"/>
-        <param field="Mode4" label="Google API key" width="300px" required="true"/>
+        <param field="Mode4" label="Google maps API key" width="300px" required="true"/>
         <param field="Mode5" label="Radius from home - km" width="200px" required="true" default="0.3"/>
         <param field="Mode6" label="Debug" width="100px">
             <options>
