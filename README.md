@@ -22,7 +22,7 @@ git clone https://github.com/Keles75/fmi.git FindMyiPhone
 
 # installing dependencies:
 
-cd FindMyIphone
+cd FindMyiPhone
 
 virtualenv -p python3 .env
 
